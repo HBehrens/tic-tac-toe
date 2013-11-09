@@ -1,0 +1,2 @@
+function TicTacToeCntl(a){a.reset=function(){a.board=[["","",""],["","",""],["","",""]],a.nextMove="X",a.winner="",a.grade()},a.dropPiece=function(b,c){a.winner||a.board[b][c]||(a.board[b][c]=a.nextMove,a.nextMove="X"==a.nextMove?"O":"X",a.grade())},a.grade=function(){function b(a,b,c){return a==b&&b==c?a:""}function c(a){return b(e[a][0],e[a][1],e[a][2])}function d(a){return b(e[0][1-a],e[1][1],e[2][1+a])}var e=a.board;a.winner=c(0)||c(1)||c(2)||d(-1)||d(1)},a.reset()}TicTacToeCntl.$inject=["$scope"],angular.module("App",[]);
+//# sourceMappingURL=tic-tac-toe.js.map
