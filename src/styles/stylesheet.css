@@ -1,0 +1,12 @@
+tr {
+    height: 42px;
+}
+
+td {
+    width: 40px;
+    font-size: 32px;
+    border: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
