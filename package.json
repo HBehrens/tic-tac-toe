@@ -1,0 +1,14 @@
+{
+  "name": "tic-tac-toe",
+  "version": "0.1.0",
+  "description": "example for grunt",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "author": "Heiko Behrens",
+  "license": "BSD-2-Clause"
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.7.1"
+  }
+}
