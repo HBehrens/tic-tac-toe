@@ -57,7 +57,9 @@ module.exports = (grunt) ->
     'gh-pages':
       options:
         base: '<%= distdir %>'
-        repo: 'https://github.com/HBehrens/tic-tac-toe.git'
+        user:
+          name: 'Heiko Behrens'
+          email: 'mail@HeikoBehrens.net'
       src: ['**']
 
     watch:

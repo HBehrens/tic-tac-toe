@@ -10,11 +10,8 @@ script:
 after_success:
 - git config --global user.name "${GIT_NAME}"
 - git config --global user.email "${GIT_EMAIL}"
-- git config credential.helper "store --file=.git/credentials"
-- echo "https://${GH_TOKEN}:@github.com" > .git/credentials
-- grunt release
+- grunt release --verbose
 env:
   global:
-  - secure: ded8xnv+gGJfN6/zLmAM6sHCg1hQG/5XtHzWQeRUXpxLI8GcUcA4MzVCRO03ttUazqACQMuSx82fwugwIliyBOoPV0IxoHdJKGaFRhDGsWLBy6mEi7C5PBvoNLwtyCugHDVir5z5bfKjjNdCKKa/Mc/Ut+kstune0smoVUIdDhU=
   - secure: UX7WrpgT08pUrv+rxcXLKhxvBxtvAbo+F3Ffq1GYWpRIlh6Wyt2RVESvxyhnqQL342A3JsmmoX//QOipTwHGEzpu0zPHFkRby4khL0HkvMSKYDY9uUCV3akydVVSzK0kMNizoa+2PZzRaL4dOsIGF9uAJqd357ZnlKpE0+R1tdw=
   - secure: P2NFS68xKoGp0ygBFWs8mi6toSuF6U6SVNbSpqbU4qQDB2eFEyphz+tFJuf+Rz3z1idVH8vDk36CFtFj10Zj3yaXs2Oqj2K4b9eWsDKZVUbiy4TMgL3wifQnMuQNhqk/iISPPuN7Bf01T+hDBeL580p+YsOagyNqnzeRSgsJMPw=
