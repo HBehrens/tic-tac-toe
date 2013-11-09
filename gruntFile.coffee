@@ -5,10 +5,16 @@ module.exports = (grunt) ->
   # Default tasks
   grunt.registerTask 'default', ['jshint', 'build']
   grunt.registerTask 'build', ['clean', 'concat', 'uglify', 'recess', 'htmlrefs']
+  grunt.registerTask 'continuous', ['jshint', 'build', 'karma:unit']
   grunt.registerTask 'release', ['gh-pages']
 
   grunt.registerTask 'timestamp', ->
     grunt.log.subhead Date()
+
+  karmaConfig = (configFile, customOptions) ->
+    options = { configFile: configFile, keepalive: true }
+    travisOptions = process.env.TRAVIS && { browsers: ['Firefox'], reporters: 'dots' }
+    grunt.util._.extend options, customOptions, travisOptions
 
   grunt.initConfig
     distdir: 'dist'
@@ -57,3 +63,9 @@ module.exports = (grunt) ->
       all:
         files: ['src/**/*']
         tasks: ['default', 'timestamp']
+
+    karma:
+      unit:
+        options: karmaConfig('test/config/unit.coffee')
+      watch:
+        options: karmaConfig('test/config/unit.coffee', { singleRun:false, autoWatch: true})
