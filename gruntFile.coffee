@@ -1,12 +1,6 @@
 module.exports = (grunt) ->
 
-  grunt.loadNpmTasks 'grunt-contrib-jshint'
-  grunt.loadNpmTasks 'grunt-contrib-clean'
-  grunt.loadNpmTasks 'grunt-contrib-concat'
-  grunt.loadNpmTasks 'grunt-contrib-copy'
-  grunt.loadNpmTasks 'grunt-htmlrefs'
-  grunt.loadNpmTasks 'grunt-contrib-uglify'
-  grunt.loadNpmTasks 'grunt-recess'
+  grunt.loadNpmTasks lib for lib in require("matchdep").filterDev("grunt-*")
 
   # Default tasks
   grunt.registerTask 'default', ['jshint', 'build']
