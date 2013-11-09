@@ -5,6 +5,7 @@ module.exports = (grunt) ->
   # Default tasks
   grunt.registerTask 'default', ['jshint', 'build']
   grunt.registerTask 'build', ['clean', 'concat', 'uglify', 'recess', 'htmlrefs']
+  grunt.registerTask 'release', ['gh-pages']
 
   grunt.initConfig
     distdir: 'dist'
@@ -43,3 +44,8 @@ module.exports = (grunt) ->
       dist:
         src: ['src/index.html']
         dest: '<%= distdir %>'
+
+    'gh-pages':
+      options:
+        base: '<%= distdir %>'
+      src: ['**']
