@@ -7,6 +7,9 @@ module.exports = (grunt) ->
   grunt.registerTask 'build', ['clean', 'concat', 'uglify', 'recess', 'htmlrefs']
   grunt.registerTask 'release', ['gh-pages']
 
+  grunt.registerTask 'timestamp', ->
+    grunt.log.subhead Date()
+
   grunt.initConfig
     distdir: 'dist'
     pkg: grunt.file.readJSON('package.json')
@@ -49,3 +52,8 @@ module.exports = (grunt) ->
       options:
         base: '<%= distdir %>'
       src: ['**']
+
+    watch:
+      all:
+        files: ['src/**/*']
+        tasks: ['default', 'timestamp']
