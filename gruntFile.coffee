@@ -5,10 +5,12 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-htmlrefs'
+  grunt.loadNpmTasks 'grunt-contrib-uglify'
+  grunt.loadNpmTasks 'grunt-recess'
 
   # Default tasks
   grunt.registerTask 'default', ['jshint', 'build']
-  grunt.registerTask 'build', ['clean', 'concat', 'copy', 'htmlrefs']
+  grunt.registerTask 'build', ['clean', 'concat', 'uglify', 'recess', 'htmlrefs']
 
   grunt.initConfig
     distdir: 'dist'
@@ -23,13 +25,25 @@ module.exports = (grunt) ->
 
     concat:
       dist:
-        src: ['vendor/**/*.js', '<%= src.js %>']
-        dest: '<%= distdir %>/<%= pkg.name %>.js'
+        src: ['vendor/**/*.js']
+        dest: '<%= distdir %>/vendor.js'
 
-    copy:
-      css:
-        src: 'src/styles/stylesheet.css'
-        dest: '<%= distdir %>/<%= pkg.name %>.css'
+    uglify:
+      dist:
+        files:
+          '<%= distdir %>/<%= pkg.name %>.js': ['<%= src.js %>']
+        options:
+          sourceMap: '<%= distdir %>/<%= pkg.name %>.js.map'
+          sourceMapRoot: '..'
+          sourceMappingURL: (u) -> u.replace(/^dist\//, '')+'.map'
+
+    recess:
+      dist:
+        files:
+          '<%= distdir %>/<%= pkg.name %>.css': ['src/styles/stylesheet.css']
+        options:
+          compile: true
+          compress: true
 
     htmlrefs:
       dist:

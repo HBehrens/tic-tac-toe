@@ -34,6 +34,7 @@ function TicTacToeCntl($scope) {
     };
 
     $scope.reset();
-
-
 }
+
+// workaround for uglify
+TicTacToeCntl.$inject = ['$scope'];
