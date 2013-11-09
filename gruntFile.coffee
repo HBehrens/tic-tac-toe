@@ -57,9 +57,8 @@ module.exports = (grunt) ->
     'gh-pages':
       options:
         base: '<%= distdir %>'
-        user:
-          name: 'Heiko Behrens'
-          email: 'mail@HeikoBehrens.net'
+        repo: "https://#{process.env.GH_TOKEN}@github.com/HBehrens/tic-tac-toe.git" if process.env.TRAVIS
+        silent: true  # so GH_TOKEN won't be printed into shell
       src: ['**']
 
     watch:

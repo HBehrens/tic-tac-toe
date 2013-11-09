@@ -8,10 +8,9 @@ before_script:
 script:
 - grunt continuous
 after_success:
-- git config --global user.name "${GIT_NAME}"
-- git config --global user.email "${GIT_EMAIL}"
-- grunt release --verbose
+- git config --global user.name "Travis"
+- git config --global user.email "travis@travis-ci.org"
+- grunt release
 env:
   global:
-  - secure: UX7WrpgT08pUrv+rxcXLKhxvBxtvAbo+F3Ffq1GYWpRIlh6Wyt2RVESvxyhnqQL342A3JsmmoX//QOipTwHGEzpu0zPHFkRby4khL0HkvMSKYDY9uUCV3akydVVSzK0kMNizoa+2PZzRaL4dOsIGF9uAJqd357ZnlKpE0+R1tdw=
-  - secure: P2NFS68xKoGp0ygBFWs8mi6toSuF6U6SVNbSpqbU4qQDB2eFEyphz+tFJuf+Rz3z1idVH8vDk36CFtFj10Zj3yaXs2Oqj2K4b9eWsDKZVUbiy4TMgL3wifQnMuQNhqk/iISPPuN7Bf01T+hDBeL580p+YsOagyNqnzeRSgsJMPw=
+    secure: BBiA0UFVe6JJeaxd1vpA2wiuBaKF4ibm8VY+0dbg8zISykd3zqyN1rQpXDthUQNUlBPWn7Iv4IK1JAO6z+vKN72dbAQ6rJo3sWi4Os1kYq/u8MpgZKqlHahKzqfVvmWYhFxbqwrgUHS+Y604FL0YpIdqqbQOjlJA4ssNCdHCbOk=
