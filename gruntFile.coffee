@@ -59,7 +59,7 @@ module.exports = (grunt) ->
         base: '<%= distdir %>'
         repo: "https://#{process.env.GH_TOKEN}@github.com/HBehrens/tic-tac-toe.git" if process.env.TRAVIS
         silent: true  # so GH_TOKEN won't be printed into shell
-      src: ['**']
+      dist: ['**']
 
     watch:
       all:
