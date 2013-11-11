@@ -3,9 +3,9 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks lib for lib in require("matchdep").filterDev("grunt-*")
 
   # Default tasks
-  grunt.registerTask 'default', ['jshint', 'build']
-  grunt.registerTask 'build', ['clean', 'concat', 'uglify', 'recess', 'htmlrefs']
-  grunt.registerTask 'continuous', ['jshint', 'build', 'karma:unit']
+  grunt.registerTask 'default', ['build']
+  grunt.registerTask 'build', ['clean', 'coffee', 'concat', 'uglify', 'recess', 'htmlrefs']
+  grunt.registerTask 'continuous', ['coffeelint', 'build', 'karma:unit']
   grunt.registerTask 'release', ['gh-pages']
 
   grunt.registerTask 'timestamp', ->
@@ -18,15 +18,23 @@ module.exports = (grunt) ->
 
   grunt.initConfig
     distdir: 'dist'
+    tempdir: 'temp'
     pkg: grunt.file.readJSON('package.json')
 
     src:
-      js: ['src/**/*.js']
+      coffee: ['src/**/*.coffee']
 
-    clean: ['<%= distdir %>/*']
+    clean: ['<%= distdir %>/*', '<=% tempdir %>/*']
 
-    jshint: ['<%= src.js %>']
+    coffeelint:
+      app: ['<%= src.coffee %>']
 
+    coffee:
+      dist:
+        options: sourceMap: true
+        files:
+          '<%= tempdir %>/<%= pkg.name %>.js': ['<%= src.coffee %>']
+          
     concat:
       dist:
         src: ['vendor/**/*.js']
@@ -35,7 +43,7 @@ module.exports = (grunt) ->
     uglify:
       dist:
         files:
-          '<%= distdir %>/<%= pkg.name %>.js': ['<%= src.js %>']
+          '<%= distdir %>/<%= pkg.name %>.js': ['<%= tempdir %>/<%= pkg.name %>.js']
         options:
           sourceMap: '<%= distdir %>/<%= pkg.name %>.js.map'
           sourceMapRoot: '..'

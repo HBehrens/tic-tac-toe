@@ -31,6 +31,8 @@
     "karma-chai": "0.0.2",
     "mocha": "~1.14.0",
     "karma-mocha": "~0.1.0",
-    "grunt": "~0.4.1"
+    "grunt": "~0.4.1",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-coffeelint": "0.0.7"
   }
 }
