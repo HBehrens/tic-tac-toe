@@ -24,7 +24,7 @@ module.exports = (grunt) ->
     src:
       coffee: ['src/**/*.coffee']
 
-    clean: ['<%= distdir %>/*', '<=% tempdir %>/*']
+    clean: ['<%= distdir %>/*', '<%= tempdir %>/*']
 
     coffeelint:
       app: ['<%= src.coffee %>']
