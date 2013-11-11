@@ -31,10 +31,17 @@ module.exports = (grunt) ->
 
     coffee:
       dist:
-        options: sourceMap: true
+        options:
+          sourceMap: true
+# don't compile files separately, so we can get at least _some_ sourcemaps
+#        expand: true
+#        flatten: true
+#        src: ['<%= src.coffee %>']
+#        dest: '<%= tempdir %>/'
+#        ext: '.js'
         files:
           '<%= tempdir %>/<%= pkg.name %>.js': ['<%= src.coffee %>']
-          
+
     concat:
       dist:
         src: ['vendor/**/*.js']
@@ -46,8 +53,9 @@ module.exports = (grunt) ->
           '<%= distdir %>/<%= pkg.name %>.js': ['<%= tempdir %>/<%= pkg.name %>.js']
         options:
           sourceMap: '<%= distdir %>/<%= pkg.name %>.js.map'
-          sourceMapRoot: '..'
+          sourceMapRoot: '../temp'
           sourceMappingURL: (u) -> u.replace(/^dist\//, '')+'.map'
+          sourceMapIn: (e) -> e + ".map"
 
     recess:
       dist:
