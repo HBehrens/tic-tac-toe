@@ -44,7 +44,7 @@ module.exports = (grunt) ->
     recess:
       dist:
         files:
-          '<%= distdir %>/<%= pkg.name %>.css': ['src/styles/stylesheet.css']
+          '<%= distdir %>/<%= pkg.name %>.css': ['src/styles/stylesheet.less']
         options:
           compile: true
           compress: true
