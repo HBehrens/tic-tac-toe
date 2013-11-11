@@ -3,8 +3,8 @@ module.exports = (config) ->
         basePath: '../..'
         frameworks: ["mocha", "chai"]
         files: [
-            'vendor/**/*.js',
-            'src/**/*.js',
+            'dist/vendor.js',
+            'dist/tic-tac-toe.js',
             'test/**/*.spec.coffee'
         ]
         reporters: 'progress'
