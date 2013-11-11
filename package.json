@@ -33,6 +33,7 @@
     "karma-mocha": "~0.1.0",
     "grunt": "~0.4.1",
     "grunt-contrib-coffee": "~0.7.0",
-    "grunt-coffeelint": "0.0.7"
+    "grunt-coffeelint": "0.0.7",
+    "grunt-contrib-jade": "~0.8.0"
   }
 }

@@ -1,0 +1,16 @@
+!!! 5
+html(ng-app='App')
+head
+    script(type='text/javascript', src='vendor.js')
+    script(type='text/javascript', src='tic-tac-toe.js')
+    link(type='text/css', rel='stylesheet', href='tic-tac-toe.css')
+    body
+        h4#source_tic-tac-toe Tic-Tac-Toe
+        div(ng-controller='TicTacToeCntl')
+            | Next Player: {{nextMove}}
+            .winner(ng-show='winner') Player {{winner}} has won!
+            table.board
+                tr(ng-repeat='row in board track by $index')
+                    td(ng-repeat='cell in row track by $index', ng-click='dropPiece($parent.$index, $index)') {{cell}}
+            button(ng-click='reset()') reset board
+                                      

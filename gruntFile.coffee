@@ -4,7 +4,7 @@ module.exports = (grunt) ->
 
   # Default tasks
   grunt.registerTask 'default', ['build']
-  grunt.registerTask 'build', ['clean', 'coffee', 'concat', 'uglify', 'recess', 'htmlrefs']
+  grunt.registerTask 'build', ['clean', 'coffee', 'concat', 'uglify', 'recess', 'jade']
   grunt.registerTask 'continuous', ['coffeelint', 'build', 'karma:unit']
   grunt.registerTask 'release', ['gh-pages']
 
@@ -57,10 +57,10 @@ module.exports = (grunt) ->
           compile: true
           compress: true
 
-    htmlrefs:
+    jade:
       dist:
-        src: ['src/index.html']
-        dest: '<%= distdir %>'
+        files:
+          '<%= distdir %>/index.html' : ['src/index.jade']
 
     'gh-pages':
       options:
